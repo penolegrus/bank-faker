@@ -2,7 +2,7 @@
 
 Java библиотека для генерации российских банковских и налоговых кодов: ИНН, ОГРН, БИК, КПП, ОКПО, СНИЛС, ОКАТО, корреспондентских и расчётных счетов, кадастровых номеров.
 
-[![Maven Central](https://img.shields.io/maven-central/v/com.github.fakerussian/bank-faker-russian.svg)](https://search.maven.org/artifact/com.github.fakerussian/bank-faker-russian)
+[![Maven Central](https://img.shields.io/maven-central/v/com.github.fakerussian/bank-faker-russian.svg)](https://search.maven.org/artifact/io.github.penolegrus/bank-faker)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Возможности
