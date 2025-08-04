@@ -24,8 +24,8 @@ Java библиотека для генерации российских бан�
 
 ```xml
 <dependency>
-    <groupId>thread.qa.bankfaker</groupId>
-    <artifactId>bank-faker-russian</artifactId>
+    <groupId>io.github.penolegrus</groupId>
+    <artifactId>bank-faker</artifactId>
     <version>1.0.0</version>
 </dependency>
 ```
@@ -33,7 +33,7 @@ Java библиотека для генерации российских бан�
 ### Gradle
 
 ```gradle
-implementation 'thread.qa.bankfaker:bank-faker-russian:1.0.0'
+implementation 'io.github.penolegrus:bank-faker:1.0.0'
 ```
 
 ## Использование
@@ -41,7 +41,7 @@ implementation 'thread.qa.bankfaker:bank-faker-russian:1.0.0'
 ### Базовое использование
 
 ```java
-import thread.qa.bankfaker.FakerRussian;
+import io.github.penolegrus.FakerRussian;
 
 FakerRussian faker = new FakerRussian();
 
@@ -60,7 +60,7 @@ String okato = faker.okato();       // "45286585000"
 #### БИК
 
 ```java
-import thread.qa.bankfaker.generators.BikOptions;
+import generators.io.github.penolegrus.BikOptions;
 
 // БИК для конкретного региона ОКАТО
 String bik = faker.bik(new BikOptions("78")); // "047825225"
@@ -72,8 +72,8 @@ String bik = faker.bik(new BikOptions(12345L)); // всегда одинаков
 #### ИНН
 
 ```java
-import thread.qa.bankfaker.generators.InnOptions;
-import thread.qa.bankfaker.generators.InnOptions.Kind;
+import generators.io.github.penolegrus.InnOptions;
+import generators.io.github.penolegrus.InnOptions.Kind;
 
 // ИНН физического лица (12 цифр)
 String individualInn = faker.inn(new InnOptions(Kind.INDIVIDUAL));
@@ -92,8 +92,8 @@ String inn = faker.inn(options);
 #### ОГРН
 
 ```java
-import thread.qa.bankfaker.generators.OgrnOptions;
-import thread.qa.bankfaker.generators.OgrnOptions.Kind;
+import generators.io.github.penolegrus.OgrnOptions;
+import generators.io.github.penolegrus.OgrnOptions.Kind;
 
 // ОГРН юридического лица (13 цифр)
 String legalOgrn = faker.ogrn(new OgrnOptions(Kind.LEGAL));
@@ -108,7 +108,7 @@ String regionOgrn = faker.ogrn(new OgrnOptions("78"));
 #### Корреспондентский счёт
 
 ```java
-import thread.qa.bankfaker.generators.CorrespondentAccountOptions;
+import generators.io.github.penolegrus.CorrespondentAccountOptions;
 
 // Корреспондентский счёт для конкретного БИК
 String account = faker.correspondentAccount(new CorrespondentAccountOptions("044525225"));
@@ -117,7 +117,7 @@ String account = faker.correspondentAccount(new CorrespondentAccountOptions("044
 #### Расчётный счёт
 
 ```java
-import thread.qa.bankfaker.generators.SettlementAccountOptions;
+import generators.io.github.penolegrus.SettlementAccountOptions;
 
 // Расчётный счёт с конкретным ОКВ
 String account = faker.settlementAccount(new SettlementAccountOptions("810"));
@@ -126,7 +126,7 @@ String account = faker.settlementAccount(new SettlementAccountOptions("810"));
 #### ОКАТО
 
 ```java
-import thread.qa.bankfaker.generators.OkatoOptions;
+import generators.io.github.penolegrus.OkatoOptions;
 
 // ОКАТО конкретной длины
 String okato3 = faker.okato(new OkatoOptions(3));   // 3 цифры
@@ -140,7 +140,7 @@ String regionOkato = faker.okato(new OkatoOptions("78"));
 #### Кадастровый номер
 
 ```java
-import thread.qa.bankfaker.generators.CadastralNumberOptions;
+import generators.io.github.penolegrus.CadastralNumberOptions;
 
 // Кадастровый номер с конкретными параметрами
 CadastralNumberOptions options = new CadastralNumberOptions(61, 16, "8960136");

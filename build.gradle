@@ -5,9 +5,8 @@ plugins {
     id 'signing'
 }
 
-group = 'thread.qa.bankfaker'
+group = 'io.github.penolegrus'
 version = '1.0.0'
-archivesBaseName = 'bank-faker-russian'
 
 repositories {
     mavenCentral()
@@ -30,7 +29,7 @@ java {
 }
 
 application {
-    mainClass = 'thread.qa.bankfaker.Example'
+    mainClass = 'io.github.penolegrus.Example'
 }
 
 jar {
