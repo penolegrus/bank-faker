@@ -1,0 +1,101 @@
+plugins {
+    id 'java-library'
+    id 'application'
+    id 'maven-publish'
+    id 'signing'
+}
+
+group = 'thread.qa.bankfaker'
+version = '1.0.0'
+archivesBaseName = 'bank-faker-russian'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+    withSourcesJar()
+    withJavadocJar()
+}
+
+application {
+    mainClass = 'thread.qa.bankfaker.Example'
+}
+
+jar {
+    manifest {
+        attributes(
+            'Implementation-Title': 'Bank Faker Russian',
+            'Implementation-Version': project.version,
+            'Implementation-Vendor': 'com.github.fakerussian'
+        )
+    }
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+            
+            pom {
+                name = 'Bank Faker Russian'
+                description = 'Java library for generating Russian-specific fake data: INN, OGRN, BIK, KPP, OKPO, SNILS, OKATO, correspondent accounts, settlement accounts, and cadastral numbers.'
+                url = 'https://github.com/penolegrus/bank-faker'
+                inceptionYear = '2025'
+                
+                licenses {
+                    license {
+                        name = 'MIT License'
+                        url = 'https://opensource.org/licenses/MIT'
+                        distribution = 'repo'
+                    }
+                }
+                
+                developers {
+                    developer {
+                        id = 'penolegrus'
+                        name = 'Oleg Pendrak'
+                        email = 'info@threadqa.ru'
+                    }
+                }
+                
+                scm {
+                    connection = 'scm:git:git://github.com/penolegrus/bank-faker.git'
+                    developerConnection = 'scm:git:ssh://github.com:penolegrus/bank-faker.git'
+                    url = 'https://github.com/penolegrus/bank-faker/tree/main'
+                }
+                
+                issueManagement {
+                    system = 'GitHub'
+                    url = 'https://github.com/penolegrus/bank-faker/issues'
+                }
+            }
+        }
+    }
+    
+    repositories {
+        maven {
+            name = "OSSRH"
+            url = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+            credentials {
+                username = project.findProperty("ossrhUsername") ?: System.getenv("OSSRH_USERNAME")
+                password = project.findProperty("ossrhPassword") ?: System.getenv("OSSRH_PASSWORD")
+            }
+        }
+    }
+}
+
+signing {
+    sign publishing.publications.maven
+}
